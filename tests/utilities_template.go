@@ -22,6 +22,12 @@ func testTemplate(t *testing.T, variant string) {
 
 	terraform.InitAndApply(t, terraformOptions)
 
-	output := terraform.Output(t, terraformOptions, "hello_world")
-	assert.Equal(t, "Hello, World!", output)
+	arn := terraform.Output(t, terraformOptions, "arn")
+
+	accountID := getAWSAccountID(t)
+	expectedName := fmt.Sprintf("example-tf-cloudfront-function-%s", variant)
+
+	expectedARN := fmt.Sprintf("arn:aws:cloudfront::%s:function/%s", accountID, expectedName)
+
+	assert.Equal(t, expectedARN, arn)
 }
