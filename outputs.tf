@@ -1,9 +1,9 @@
-output "hello_world" {
-  description = "Hello world output"
-  value       = "Hello, World!"
+output "arn" {
+  description = "ARN of the CloudFront Function"
+  value       = aws_cloudfront_function.function.arn
 }
 
-output "tags" {
-  description = "The tags"
-  value       = local.tags
+output "name" {
+  description = "Name of the CloudFront Function"
+  value       = aws_cloudfront_function.function.name
 }

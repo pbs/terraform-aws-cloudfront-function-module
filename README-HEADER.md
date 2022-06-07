@@ -1,5 +1,4 @@
-# PBS TF MOD_TITLE
-
+# PBS TF CloudFront Function
 ## Installation
 
 ### Using the Repo Source
@@ -7,7 +6,7 @@
 Use this URL for the source of the module. See the usage examples below for more details.
 
 ```hcl
-github.com/pbs/terraform-aws-MOD_NAME?ref=x.y.z
+github.com/pbs/terraform-aws-cloudfront-function-module?ref=x.y.z
 ```
 
 ### Alternative Installation Methods
@@ -16,26 +15,15 @@ More information can be found on these install methods and more in [the document
 
 ## Usage
 
-<!-- TODO -->
-This should be a basic description of what this module does.
-Fill this out before completing usage of this template.
-<!-- TODO -->
+A CloudFront function that integrates with one or more CloudFront behaviors.
 
 Integrate this module like so:
 
 ```hcl
-module "MOD_SHORTNAME" {
-  source = "github.com/pbs/terraform-aws-MOD_NAME?ref=x.y.z"
+module "cloudfront-function" {
+  source = "github.com/pbs/terraform-aws-cloudfront-function-module?ref=x.y.z"
 
-  <!-- TODO -->
-  Show some examples of valid values for required parameters.
-  <!-- TODO -->
-
-  # Tagging Parameters
-  organization = var.organization
-  environment  = var.environment
-  product      = var.product
-  repo         = var.repo
+  code = file("function.js")
 
   # Optional Parameters
 }

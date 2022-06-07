@@ -14,6 +14,7 @@ todo_check () {
     --exclude todo.sh \
     --exclude todo.yml \
     --exclude-dir .git \
+    --exclude-dir tests \
     .
 }
 

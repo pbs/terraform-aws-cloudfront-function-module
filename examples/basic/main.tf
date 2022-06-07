@@ -1,8 +1,7 @@
-module "MOD_SHORTNAME" {
+module "cloudfront_function" {
   source = "../.."
 
-  organization = var.organization
-  environment  = var.environment
-  product      = var.product
-  repo         = var.repo
+  product = var.product
+
+  code = file("function.js")
 }

@@ -1,31 +1,87 @@
-# TF Module Template
+# PBS TF CloudFront Function
+## Installation
 
-Version: `0.0.4`
+### Using the Repo Source
 
-This is the standard template for Terraform modules. This contains some useful scaffolding to create modules that are:
+Use this URL for the source of the module. See the usage examples below for more details.
 
-1. Well documented
-2. Tested
-3. Shareable
+```hcl
+github.com/pbs/terraform-aws-cloudfront-function-module?ref=x.y.z
+```
 
-Repos created off of this template will follow the naming convention `terraform-aws-MOD_NAME`, replacing MOD_NAME with the name of your module.
+### Alternative Installation Methods
 
-## TODO
+More information can be found on these install methods and more in [the documentation here](./docs/general/install).
 
-After creating a repo from this template, your responsibilities are as follows:
+## Usage
 
-- [ ] Run the [wizard.sh](/scripts/wizard.sh) script (`./scripts/run.sh ./scripts/wizard.sh`) to populate the boilerplate placeholders with their appropriate values. This includes the proper name of the module and a standardized slug. These values are automatically populated from the name of the repository, but can be adjusted at your discretion.
-- [ ] Update [main.tf](/main.tf), [outputs.tf](/outputs.tf), [required.tf](/required.tf) and [optional.tf](/optional.tf) with the configuration for your module (delete files you don't need).
-- [ ] Double check that the [terraform.tf](/terraform.tf) and [.tool-versions](/.tool-versions) files have the appropriate versions for resources you are going to use. For major updates, consider updating this template!
-- [ ] Create some [examples](/examples) of your module being used. Remember that the examples there will be used for tests that run in real AWS accounts!
-- [ ] Create some [tests](/tests) to validate the proper configuration of your module. See instructions [here](/docs/general/dev).
-- [ ] Update [README-HEADER.md](/README-HEADER.md) based on the properties of your module. This file will replace the README.md on commit if you follow the instructions [here](/docs/general/dev).
-- [ ] Add the git hooks listed under ## Hooks [here](/docs/general/dev). These scripts run as part of the CI, but your development experience will be smoother if you have them running locally as well.
-- [ ] Add this template as a remote (`git remote add template git@github.com:pbs/terraform-aws-template.git`). This can be used to allow you to merge back any changes you like from the template into your module.
-- [ ] Add your repo in [the service catalog][service-catalog].
+A CloudFront function that integrates with one or more CloudFront behaviors.
 
-[service-catalog]: https://github.com/pbs/pbs-tf-service-catalog
-[semver]: https://semver.org/
-[terraform-io-modules]: https://app.terraform.io/app/PBS-IAC/modules
-[gha-badge-tests]: https://github.com/pbs/terraform-aws-template/workflows/Tests/badge.svg
-[branch-restrictions]: https://github.com/pbs/terraform-aws-template/settings/branches
+Integrate this module like so:
+
+```hcl
+module "cloudfront-function" {
+  source = "github.com/pbs/terraform-aws-cloudfront-function-module?ref=x.y.z"
+
+  code = file("function.js")
+
+  # Optional Parameters
+}
+```
+
+## Adding This Version of the Module
+
+If this repo is added as a subtree, then the version of the module should be close to the version shown here:
+
+`x.y.z`
+
+Note, however that subtrees can be altered as desired within repositories.
+
+Further documentation on usage can be found [here](./docs).
+
+Below is automatically generated documentation on this Terraform module using [terraform-docs][terraform-docs]
+
+---
+
+[terraform-docs]: https://github.com/terraform-docs/terraform-docs
+
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.7 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.5.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.5.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_cloudfront_function.function](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_function) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_code"></a> [code](#input\_code) | The code of the function | `string` | n/a | yes |
+| <a name="input_product"></a> [product](#input\_product) | Tag used to group resources according to product | `string` | n/a | yes |
+| <a name="input_comment"></a> [comment](#input\_comment) | Description of the function. | `string` | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | Name of the cloudfront function module. If null, will default to application\_tag. | `string` | `null` | no |
+| <a name="input_publish"></a> [publish](#input\_publish) | Whether to publish creation/change as Live CloudFront Function Version. Defaults to true. | `bool` | `true` | no |
+| <a name="input_runtime"></a> [runtime](#input\_runtime) | The runtime to use for the function. | `string` | `"cloudfront-js-1.0"` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_arn"></a> [arn](#output\_arn) | ARN of the CloudFront Function |
+| <a name="output_name"></a> [name](#output\_name) | Name of the CloudFront Function |

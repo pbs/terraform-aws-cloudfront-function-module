@@ -1,4 +1,9 @@
-output "hello_world" {
-  description = "Hello World"
-  value       = module.MOD_SHORTNAME.hello_world
+output "arn" {
+  description = "ARN of the function"
+  value       = module.cloudfront_function.arn
+}
+
+output "name" {
+  description = "Name of the function"
+  value       = module.cloudfront_function.name
 }
