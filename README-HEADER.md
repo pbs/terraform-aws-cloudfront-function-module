@@ -1,5 +1,4 @@
-# PBS TF cloudfront function module
-
+# PBS TF CloudFront Function
 ## Installation
 
 ### Using the Repo Source
@@ -24,10 +23,7 @@ Integrate this module like so:
 module "cloudfront-function" {
   source = "github.com/pbs/terraform-aws-cloudfront-function-module?ref=x.y.z"
 
-  <!-- TODO -->
-  # Required variables. Change code to something useful.
-  code = ""
-  <!-- TODO -->
+  code = file("function.js")
 
   # Optional Parameters
 }
