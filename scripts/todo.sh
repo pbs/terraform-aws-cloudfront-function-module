@@ -5,20 +5,19 @@ set -euo pipefail
 IFS=$'\n\t'
 
 GIT_ROOT=$(git rev-parse --show-toplevel)
-pushd "$GIT_ROOT" > /dev/null || exit 1
+pushd "$GIT_ROOT" >/dev/null || exit 1
 
-todo_check () {
+todo_check() {
   grep \
     -I \
     -r 'TODO' \
     --exclude todo.sh \
     --exclude todo.yml \
     --exclude-dir .git \
-    --exclude-dir tests \
     .
 }
 
 if todo_check; then
-    echo 'Please address TODOs before merging into main.'
-    exit 1
+  echo 'Please address TODOs before merging into main.'
+  exit 1
 fi
