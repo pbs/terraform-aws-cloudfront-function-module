@@ -3,5 +3,4 @@ header-from: README-HEADER.md
 
 sort:
   enabled: true
-  by:
-    - required
+  by: required

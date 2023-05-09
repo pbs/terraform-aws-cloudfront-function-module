@@ -50,39 +50,39 @@ Below is automatically generated documentation on this Terraform module using [t
 
 | Name | Version |
 |------|---------|
-| terraform | >= 1.3.2 |
-| aws | >= 4.5.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.2 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.5.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 4.5.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.66.1 |
 
 ## Modules
 
-No Modules.
+No modules.
 
 ## Resources
 
-| Name |
-|------|
-| [aws_cloudfront_function](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_function) |
+| Name | Type |
+|------|------|
+| [aws_cloudfront_function.function](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_function) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| code | The code of the function | `string` | n/a | yes |
-| product | Tag used to group resources according to product | `string` | n/a | yes |
-| comment | Description of the function. | `string` | `null` | no |
-| name | Name of the cloudfront function module. If null, will default to application\_tag. | `string` | `null` | no |
-| publish | Whether to publish creation/change as Live CloudFront Function Version. Defaults to true. | `bool` | `true` | no |
-| runtime | The runtime to use for the function. | `string` | `"cloudfront-js-1.0"` | no |
+| <a name="input_code"></a> [code](#input\_code) | The code of the function | `string` | n/a | yes |
+| <a name="input_product"></a> [product](#input\_product) | Tag used to group resources according to product | `string` | n/a | yes |
+| <a name="input_comment"></a> [comment](#input\_comment) | Description of the function. | `string` | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | Name of the cloudfront function module. If null, will default to application\_tag. | `string` | `null` | no |
+| <a name="input_publish"></a> [publish](#input\_publish) | Whether to publish creation/change as Live CloudFront Function Version. Defaults to true. | `bool` | `true` | no |
+| <a name="input_runtime"></a> [runtime](#input\_runtime) | The runtime to use for the function. | `string` | `"cloudfront-js-1.0"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| arn | ARN of the CloudFront Function |
-| name | Name of the CloudFront Function |
+| <a name="output_arn"></a> [arn](#output\_arn) | ARN of the CloudFront Function |
+| <a name="output_name"></a> [name](#output\_name) | Name of the CloudFront Function |
